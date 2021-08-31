@@ -19,15 +19,17 @@ repositories {
     mavenCentral()
 }
 
+val arrowVersion = "0.13.2"
+
 dependencies {
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
     // This dependency is used by the application.
     implementation("com.google.guava:guava:30.1.1-jre")
+
+    implementation("io.arrow-kt:arrow-core:$arrowVersion")
 
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
