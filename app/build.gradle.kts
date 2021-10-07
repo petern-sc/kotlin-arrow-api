@@ -15,6 +15,9 @@ repositories {
 val arrowVersion = "0.13.2"
 val http4kVersion = "4.12.0.1"
 val kotlinxVersion = "1.2.2"
+val kotlinLoggingVersion = "2.0.10"
+val logbackVersion = "1.2.6"
+val slf4jVersion = "2.0.0-alpha5"
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
@@ -33,6 +36,10 @@ dependencies {
     implementation("org.http4k:http4k-client-okhttp:$http4kVersion")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxVersion")
+
+    implementation("io.github.microutils:kotlin-logging-jvm:$kotlinLoggingVersion")
+    implementation("org.slf4j:slf4j-simple:$slf4jVersion")
+
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
