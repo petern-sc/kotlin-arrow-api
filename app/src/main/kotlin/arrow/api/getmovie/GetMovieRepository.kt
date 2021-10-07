@@ -1,19 +1,31 @@
 package arrow.api.getmovie
 
-import arrow.core.None
+import arrow.api.util.toArrowOption
 import arrow.core.Option
-import arrow.core.Some
-import kotlin.random.Random
+import org.jdbi.v3.core.Jdbi
+import org.jdbi.v3.core.kotlin.inTransactionUnchecked
+import org.jdbi.v3.core.kotlin.mapTo
 
-class GetMovieRepository {
-
-    suspend fun loadMovie(movieId: Long): Option<Movie> = run {
-        if (randomness()) {
-            Some(Movie(movieId, "Titanic"))
-        } else {
-            None
+class GetMovieRepository(
+    private val db: Jdbi
+) {
+    suspend fun loadMovie(movieId: Long): Option<Movie> {
+        return db.inTransactionUnchecked { handle ->
+            handle.createQuery(selectMovieByIdSql)
+                .bind("id", movieId)
+                .mapTo<Movie>()
+                .findOne()
+                .toArrowOption()
         }
     }
 
-    private suspend fun randomness(): Boolean = Random.nextInt() % 2 == 0
+    companion object {
+        private val selectMovieByIdSql = """
+            SELECT 
+                id, 
+                name 
+            FROM movie
+            WHERE id = :id
+        """.trimIndent()
+    }
 }

@@ -1,5 +1,6 @@
 package arrow.api
 
+import arrow.api.data.DatabaseConfig
 import arrow.api.getmovie.GetMovieController
 import arrow.api.getmovie.GetMovieRepository
 import arrow.api.getmovie.GetMovieService
@@ -11,7 +12,8 @@ import org.http4k.server.Jetty
 import org.http4k.server.asServer
 
 fun main() {
-    val getMovieRepository = GetMovieRepository()
+    val db = DatabaseConfig.jdbi
+    val getMovieRepository = GetMovieRepository(db)
     val getMovieService = GetMovieService(
         loadMovie = getMovieRepository::loadMovie
     )

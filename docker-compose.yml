@@ -1,0 +1,38 @@
+version: "2"
+
+services:
+  dev:
+    image: openjdk:17-alpine
+    working_dir: /work
+    command: ./gradlew run
+    environment:
+      PORT: 8081
+      DATABASE_HOST: database
+      DATABASE_NAME: moviedb
+      DATABASE_USERNAME: moviedb
+      DATABASE_PASSWORD: moviedb
+    ports:
+      - "9200:9200"
+    volumes:
+      - .:/work
+    depends_on:
+      - database
+
+  database:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: moviedb
+      POSTGRES_PASSWORD: moviedb
+      POSTGRES_DB: moviedb
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+
+#volumes:
+#  coursier-cache:
+#    external: true
+#  docker-scala-sbt-cache:
+#    external: true
+#  ivy-cache:
+#    external: true

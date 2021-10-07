@@ -8,9 +8,10 @@ import org.http4k.filter.ResponseFilters
 
 object AccessLoggingFilter {
     private val logger = KotlinLogging.logger {}
+    private val jsonFormat = Json { prettyPrint = true }
 
     val accessLogging = ResponseFilters.ReportHttpTransaction { tx: HttpTransaction ->
-        logger.info { Json.encodeToString(tx.toAccessLog()) }
+        logger.info { jsonFormat.encodeToString(tx.toAccessLog()) }
     }
 }
 
