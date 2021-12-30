@@ -1,4 +1,4 @@
-package arrow.api.getmovie
+package arrow.api.movie
 
 import kotlinx.serialization.Serializable
 

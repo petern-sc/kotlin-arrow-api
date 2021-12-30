@@ -1,6 +1,7 @@
-package arrow.api.getmovie
+package arrow.api.movie.getmovie
 
 import arrow.api.data.DatabaseConfig
+import arrow.api.movie.Movie
 import arrow.core.None
 import arrow.core.Some
 import io.kotest.core.spec.style.StringSpec

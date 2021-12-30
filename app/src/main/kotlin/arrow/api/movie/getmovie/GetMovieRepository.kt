@@ -1,5 +1,6 @@
-package arrow.api.getmovie
+package arrow.api.movie.getmovie
 
+import arrow.api.movie.Movie
 import arrow.api.util.toArrowOption
 import arrow.core.Option
 import org.jdbi.v3.core.Jdbi

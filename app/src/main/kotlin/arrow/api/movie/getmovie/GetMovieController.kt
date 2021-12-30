@@ -1,5 +1,6 @@
-package arrow.api.getmovie
+package arrow.api.movie.getmovie
 
+import arrow.api.movie.Movie
 import arrow.core.None
 import arrow.core.Option
 import arrow.core.Some

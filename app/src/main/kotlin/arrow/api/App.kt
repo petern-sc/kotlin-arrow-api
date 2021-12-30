@@ -1,9 +1,9 @@
 package arrow.api
 
 import arrow.api.data.DatabaseConfig
-import arrow.api.getmovie.GetMovieController
-import arrow.api.getmovie.GetMovieRepository
-import arrow.api.getmovie.GetMovieService
+import arrow.api.movie.getmovie.GetMovieController
+import arrow.api.movie.getmovie.GetMovieRepository
+import arrow.api.movie.getmovie.GetMovieService
 import arrow.api.http.AccessLoggingFilter
 import mu.KotlinLogging
 import org.http4k.core.then
